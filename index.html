@@ -217,7 +217,7 @@ h1{
   "use strict";
 
   // 教員向けの内部設定（画面には表示しません）
-  const MOTION_THRESHOLD = 1.8;     // 揺れ感度
+  const MOTION_THRESHOLD = 2.3;     // 揺れ感度
   const MIN_INTERVAL_MS = 900;      // 振動間の最短時間（0.9秒）
 
   let initial = 10;
@@ -259,8 +259,8 @@ h1{
         osc.type = "sine";
         osc.frequency.value = [523, 659, 784, 659, 1047][i];
         gain.gain.setValueAtTime(0.0001, now + offset);
-        gain.gain.exponentialRampToValueAtTime(0.38, now + offset + 0.015);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.75, now + offset + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.20);
         osc.connect(gain).connect(audioCtx.destination);
         osc.start(now + offset);
         osc.stop(now + offset + 0.22);
